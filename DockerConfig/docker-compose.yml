@@ -1,0 +1,35 @@
+version: '3'
+services:
+  app:
+    container_name: app
+    build:
+      context: ./springboot
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/testdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    container_name: db
+    build:
+      context: ./postgresql
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "testdb"
+    ports:
+      - "5432:5432"
+    volumes:
+      - test_db:/var/lib/postgresql/data
+      - "./forDocker/db/initdb:/docker-entrypoint-initdb.d"
+
+volumes:
+  test_db:
+    external: true
