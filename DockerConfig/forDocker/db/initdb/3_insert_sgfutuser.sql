@@ -5,4 +5,3 @@ insert into sgfutuser ( name, password, hosted, registered) values
    ('伊藤隆夫', 'zaq12wsx', 3, '2021-12-04 09:00:00'),
    ('山本高明', 'zaq12wsx', 4, '2021-12-04 10:00:00'),
    ('吉田拓也', 'zaq12wsx', 5, '2021-12-04 11:00:00');
-   

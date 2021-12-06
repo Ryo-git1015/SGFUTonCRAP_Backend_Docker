@@ -6,3 +6,4 @@ ENV TZ=Asia/Tokyo
 COPY target/sgfutback.jar sgfutback.jar
 
 ENTRYPOINT ["java","-jar","/sgfutback.jar"]
+
